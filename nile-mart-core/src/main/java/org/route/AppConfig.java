@@ -11,11 +11,12 @@ import java.math.BigDecimal;
 @ComponentScan
 //@ImportResource("/beans.xml")
 @PropertySource("/application.properties")
-@EnableAspectJAutoProxy
+//@EnableAspectJAutoProxy   // off: ExecutionLog prints on every ProductService call and hides the store output
 public class AppConfig {
 
+    // static: Spring needs this one before the other beans (removes the INFO warning at startup)
     @Bean
-    PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+    static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }
 
